@@ -38,7 +38,7 @@
     .blockquote-footer { color: #FFFFFF; line-height: 1.2; padding: 2px 0; }
     .video-container { max-width: 800px; margin: 0 auto; }
     video { width: 100%; height: auto; border-radius: 8px; }
-    .audio-player { display: none; }
+    .audio-player { display: block; margin: 10px auto; }
   </style>
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -59,9 +59,9 @@
 </head>
 <body>
   <!-- Background Music -->
-  <audio class="audio-player" autoplay loop controls volume="0.3">
+  <audio class="audio-player" autoplay muted loop controls volume="0.3">
     <source src="audio/thousand-years.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
+    Your browser does not support the audio element. Please ensure the audio file is available at 'audio/thousand-years.mp3' or check the file path/URL.
   </audio>
 
   <!-- Navigation Bar -->
@@ -150,7 +150,7 @@
       <h3>House Rules</h3>
       <ul>
         <li>Check-in: 2:00 PM – 10:00 PM</li>
-        <li>Check-out: Before 12:00 PM (8:00 AM – 12:00 PM)</li>
+        <li>Check-out: Before 12:00 PM</li>
         <li>Quiet hours: 11:00 PM – 8:00 AM</li>
         <li>No parties allowed</li>
         <li>Damage deposit: PKR 5,000 (refundable after inspection)</li>
@@ -195,9 +195,9 @@
       <p>Discover the beauty and attractions near our holiday home:</p>
       <div class="row">
         <div class="col-md-4 mb-4">
-          <h4>Ayubia Chairlift</h4>
+          <h4>Abbottabad Chairlift</h4>
           <p>Enjoy a scenic ride with stunning views of the Galiyat mountains, 20 minutes away.</p>
-          <img src="images/chairlift.jpg" alt="Ayubia Chairlift in Abbottabad" class="attraction-img">
+          <img src="images/chairlift.jpg" alt="Abbottabad Chairlift in Abbottabad" class="attraction-img">
         </div>
         <div class="col-md-4 mb-4">
           <h4>Baloch Mess</h4>
@@ -283,7 +283,7 @@
           <img src="images/host.jpg" alt="Host Fawad" class="rounded-circle" width="200" height="200">
         </div>
         <div class="col-md-8">
-          <p>Hi, I’m Fawad, your Superhost! As a lifelong resident of Abbottabad, I’m passionate about sharing the charm and beauty of my hometown with travelers from around the world. With years of experience in hospitality, I’ve designed this holiday home to offer comfort, convenience, and a true taste of local culture. Whether you’re here for a family vacation, a group getaway, or a peaceful work-from-home retreat, I’m dedicated to making your stay unforgettable. I’m available 24/7 to answer questions, provide local recommendations, and ensure everything runs smoothly. Fluent in English and Urdu, I love connecting with guests and helping them explore Abbottabad’s hidden gems, from the Ayubia Chairlift to local dining spots like Baloch Mess. Let me know how I can make your visit special!</p>
+          <p>Hi, I’m Fawad, your Superhost! As a lifelong resident of Abbottabad, I’m passionate about sharing the charm and beauty of my hometown with travelers from around the world. With years of experience in hospitality, I’ve designed this holiday home to offer comfort, convenience, and a true taste of local culture. Whether you’re here for a family vacation, a group getaway, or a peaceful work-from-home retreat, I’m dedicated to making your stay unforgettable. I’m available 24/7 to answer questions, provide local recommendations, and ensure everything runs smoothly. Fluent in English and Urdu, I love connecting with guests and helping them explore Abbottabad’s hidden gems, from the Abbottabad Chairlift to local dining spots like Baloch Mess. Let me know how I can make your visit special!</p>
         </div>
       </div>
     </div>
@@ -331,7 +331,7 @@
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">What attractions are nearby?</button>
           </h3>
           <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">The property is a 5-minute walk from Jadoon Plaza, 20 minutes from Ayubia Chairlift, and close to dining spots like Baloch Mess and FF Mess. See the Explore Abbottabad section for more details.</div>
+            <div class="accordion-body">The property is a 5-minute walk from Jadoon Plaza, 20 minutes from Abbottabad Chairlift, and close to dining spots like Baloch Mess and FF Mess. See the Explore Abbottabad section for more details.</div>
           </div>
         </div>
         <div class="accordion-item">
@@ -413,6 +413,13 @@
         768: { slidesPerView: 2 },
         992: { slidesPerView: 3 }
       }
+    });
+
+    // Attempt to play audio and handle errors
+    const audio = document.querySelector('.audio-player');
+    audio.volume = 0.3;
+    audio.play().catch(error => {
+      console.error('Audio playback failed:', error);
     });
   </script>
 </body>
