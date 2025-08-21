@@ -38,7 +38,7 @@
     .blockquote-footer { color: #FFFFFF; line-height: 1.2; padding: 2px 0; }
     .video-container { max-width: 800px; margin: 0 auto; }
     video { width: 100%; height: auto; border-radius: 8px; }
-    .audio-player { display: block; margin: 10px auto; }
+    .audio-player { display: none; }
   </style>
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -59,9 +59,9 @@
 </head>
 <body>
   <!-- Background Music -->
-  <audio class="audio-player" autoplay muted loop controls volume="0.3">
+  <audio class="audio-player" autoplay loop controls volume="0.3">
     <source src="audio/thousand-years.mp3" type="audio/mpeg">
-    Your browser does not support the audio element. Please ensure the audio file is available at 'audio/thousand-years.mp3' or check the file path/URL.
+    Your browser does not support the audio element.
   </audio>
 
   <!-- Navigation Bar -->
@@ -181,7 +181,7 @@
       <h2>Virtual Tour</h2>
       <div class="video-container">
         <video controls>
-          <source src="videos/house-tour.mp4" type="video/mp4">
+          <source src="videos/house-tours.mp4" type="video/mp4">
           Your browser does not support the video element.
         </video>
       </div>
@@ -196,8 +196,8 @@
       <div class="row">
         <div class="col-md-4 mb-4">
           <h4>Abbottabad Chairlift</h4>
-          <p>Enjoy a scenic ride with stunning views of the Galiyat mountains, 20 minutes away.</p>
-          <img src="images/chairlift.jpg" alt="Abbottabad Chairlift in Abbottabad" class="attraction-img">
+          <p>Enjoy a scenic ride with stunning views of Abbottabad’s scenic hills, 20 minutes away.</p>
+          <img src="images/chairlift.jpg" alt="Abbottabad Chairlift" class="attraction-img">
         </div>
         <div class="col-md-4 mb-4">
           <h4>Baloch Mess</h4>
@@ -413,13 +413,6 @@
         768: { slidesPerView: 2 },
         992: { slidesPerView: 3 }
       }
-    });
-
-    // Attempt to play audio and handle errors
-    const audio = document.querySelector('.audio-player');
-    audio.volume = 0.3;
-    audio.play().catch(error => {
-      console.error('Audio playback failed:', error);
     });
   </script>
 </body>
