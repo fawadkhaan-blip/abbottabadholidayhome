@@ -23,8 +23,8 @@
   <style>
     body { font-family: 'Roboto', sans-serif; color: #333333; }
     .hero { background: url('images/hero.jpg') center/cover no-repeat; color: white; padding: 100px 20px; text-align: center; }
-    .hero h1 { font-size: 2.5rem; font-weight: 700; }
-    .hero p { font-size: 1.25rem; }
+    .hero h1 { font-size: 2.5rem; font-weight: 700; color: #FFFFFF; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); }
+    .hero p { font-size: 1.25rem; color: #FFFFFF; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
     .btn-primary { background-color: #00897B; border: none; }
     .btn-primary:hover { background-color: #4DB6AC; }
     .section-padding { padding: 60px 0; background-color: #F5F6F5; }
@@ -36,6 +36,9 @@
     .attraction-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; }
     .blockquote { border-left: 4px solid #00897B; }
     .blockquote-footer { color: #FFFFFF; }
+    .video-container { max-width: 800px; margin: 0 auto; }
+    video { width: 100%; height: auto; border-radius: 8px; }
+    .audio-player { display: none; }
   </style>
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -55,6 +58,12 @@
   </script>
 </head>
 <body>
+  <!-- Background Music -->
+  <audio class="audio-player" autoplay loop controls volume="0.3">
+    <source src="audio/thousand-years.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top">
     <div class="container">
@@ -160,6 +169,19 @@
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Virtual Tour Section -->
+  <section id="virtual-tour" class="section-padding">
+    <div class="container">
+      <h2>Virtual Tour</h2>
+      <div class="video-container">
+        <video controls>
+          <source src="videos/house-tour.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
       </div>
     </div>
   </section>
