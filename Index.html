@@ -39,6 +39,8 @@
     .video-container { max-width: 800px; margin: 0 auto; }
     video { width: 100%; height: auto; border-radius: 8px; }
     .audio-player { display: none; }
+    .alert-success { background-color: #E0F2F1; border-color: #00897B; color: #00897B; }
+    .alert-danger { background-color: #FFEBEE; border-color: #D81B60; color: #D81B60; }
   </style>
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -181,7 +183,7 @@
       <h2>Virtual Tour</h2>
       <div class="video-container">
         <video controls>
-          <source src="videos/house-tour.mp4" type="video/mp4">
+          <source src="videos/house-tours.mp4" type="video/mp4">
           Your browser does not support the video element.
         </video>
       </div>
@@ -370,7 +372,9 @@
     <div class="container">
       <h2>Contact Us</h2>
       <p>Email: <a href="mailto:fawad.khaan@gmail.com">fawad.khaan@gmail.com</a> | Phone: +92 321 2227010</p>
-      <form class="contact-form" action="https://formspree.io/f/your-form-id" method="post">
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mblknkjq" method="post">
+        <input type="hidden" name="_replyto" value="{{email}}">
+        <input type="hidden" name="_next" value="/thank-you.html">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input type="text" class="form-control" id="name" name="name" required>
@@ -383,6 +387,7 @@
           <label for="message" class="form-label">Message</label>
           <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
         </div>
+        <div id="form-message" class="mt-3" style="display: none;"></div>
         <button type="submit" class="btn btn-primary">Send Message</button>
       </form>
     </div>
@@ -412,6 +417,34 @@
       breakpoints: {
         768: { slidesPerView: 2 },
         992: { slidesPerView: 3 }
+      }
+    });
+
+    // Contact form submission
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const form = this;
+      const formMessage = document.getElementById('form-message');
+      formMessage.style.display = 'none';
+      
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          formMessage.style.display = 'block';
+          formMessage.className = 'mt-3 alert alert-success';
+          formMessage.textContent = 'Thank you! Your message has been sent.';
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        formMessage.style.display = 'block';
+        formMessage.className = 'mt-3 alert alert-danger';
+        formMessage.textContent = 'Oops! Something went wrong. Please try again.';
       }
     });
   </script>
